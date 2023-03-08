@@ -1,10 +1,10 @@
 {
   "name": "exercises-rest",
   "version": "1.0.0",
-  "main": "exercise_controller.mjs",
+  "main": "exercises_controller.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon exercise_controller.mjs"
+    "start": "nodemon exercises_controller.mjs"
   },
   "author": "August Frisk",
   "license": "ISC",
