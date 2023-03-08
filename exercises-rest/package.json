@@ -1,0 +1,28 @@
+{
+  "name": "exercises-rest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "August Frisk",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AN0NYM0U5MY7H/CS290_A9_Full_Stack_MERN_App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AN0NYM0U5MY7H/CS290_A9_Full_Stack_MERN_App/issues"
+  },
+  "homepage": "https://github.com/AN0NYM0U5MY7H/CS290_A9_Full_Stack_MERN_App#readme",
+  "description": "CS290: Web Development — Final Project.",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1",
+    "nodemon": "^2.0.21"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
