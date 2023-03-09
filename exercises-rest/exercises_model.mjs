@@ -53,7 +53,7 @@ const findExerciseById = async (_id) => {
  * @param {String} date "MM-DD-YY" e.g. "07-30-21"
  */
 const updateExercise = async (_id, name, reps, weight, unit, date) => {
-    const result = await Exercise.replaceOne(
+    const result = await Exercise.updateOne(
         { _id: _id },
         {
             name: name,
