@@ -7,7 +7,7 @@ In this assignment, you will use the MERN stack to write a Single Page Applicati
 
 **This is the "Portfolio Assignment" for the course**. This means that you are allowed to post the entirety of the assignment publicly (e.g., Github, personal website, etc.) after the term ends. You can use this as an opportunity to showcase your work to potential employers. 
 
-**Be sure to periodically review [Assignment 9: Tips, FAQs, Corrections thread](https://edstem.org/us/courses/29198/discussion/2195678) in the Ed discussion board (pinned at the top)**
+**Be sure to periodically review [Assignment 9: Tips, FAQs, Corrections thread](https://edstem.org/us/courses/32738/discussion/2742723) in the Ed discussion board (pinned at the top)**
 
 ### Learning Outcomes
 * What is the lifecycle of a React component? (Module 9 MLO 1)
