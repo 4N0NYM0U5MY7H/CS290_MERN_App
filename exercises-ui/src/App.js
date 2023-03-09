@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import HomePage from "./pages/HomePage";
+import CreateExercisePage from "./pages/CreateExercise";
+import EditExercisePage from "./pages/EditExercise";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>
+          <img src={logo} className="App-logo" alt="logo" width="100px" />
+          Exercise Tracker
+        </h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Full Stack MERN App Demonstration
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/add-exercise" element={<CreateExercisePage />}></Route>
+          <Route path="/edit-exercise" element={<EditExercisePage />}></Route>
+        </Routes>
+      </Router>
+      <footer>
+        <p>&copy; 2023 August Frisk.</p>
+      </footer>
     </div>
   );
 }
