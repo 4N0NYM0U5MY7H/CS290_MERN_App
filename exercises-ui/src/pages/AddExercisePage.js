@@ -36,7 +36,6 @@ export const AddExercisePage = () => {
                 type="text"
                 placeholder="Enter exercise name"
                 required
-                pattern="(?!^$)([^\s])"
                 value={name}
                 onChange={e => setName(e.target.value)}
             />

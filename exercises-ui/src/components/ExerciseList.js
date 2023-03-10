@@ -17,7 +17,7 @@ export default function ExerciseList({ exercises, onDelete, onEdit }) {
                 {exercises.map((exercise, i) => <Exercise exercise={exercise}
                     onDelete={onDelete}
                     onEdit={onEdit}
-                    key={i} />)};
+                    key={i} />)}
             </tbody>
         </table>
     );

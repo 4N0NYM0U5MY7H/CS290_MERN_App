@@ -35,7 +35,6 @@ export default function EditExercisePage({ exerciseToEdit }) {
                 name="name"
                 type="text"
                 required
-                pattern="(?!^$)([^\s])"
                 value={name}
                 onChange={e => setName(e.target.value)}
             />
@@ -45,7 +44,7 @@ export default function EditExercisePage({ exerciseToEdit }) {
                 type="number"
                 required
                 pattern="^0*[1-9][0-9]*"
-                value={name}
+                value={reps}
                 onChange={e => setReps(e.target.value)}
             />
             <span className="validity"></span>
