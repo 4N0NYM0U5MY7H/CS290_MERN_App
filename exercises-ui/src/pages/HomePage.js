@@ -31,7 +31,7 @@ export default function HomePage({ setExerciseToEdit }) {
     }, []);
 
     return (
-        <main>
+        <main className="App-main">
             <h2>Home Page</h2>
             <ExerciseList exercises={exercises} onDelete={onDelete} onEdit={onEdit}></ExerciseList>
         </main>
