@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import HomePage from "./pages/HomePage";
-import CreateExercisePage from "./pages/CreateExercise";
+import AddExercisePage from "./pages/AddExercisePage";
 import EditExercisePage from "./pages/EditExercise";
 
 function App() {
+  const [exerciseToEdit, setExerciseToEdit] = useState();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -22,9 +24,9 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/add-exercise" element={<CreateExercisePage />}></Route>
-          <Route path="/edit-exercise" element={<EditExercisePage />}></Route>
+          <Route path="/" element={<HomePage setExerciseToEdit={setExerciseToEdit} />}></Route>
+          <Route path="/add-exercise" element={<AddExercisePage />}></Route>
+          <Route path="/edit-exercise" element={<EditExercisePage exerciseToEdit={exerciseToEdit} />}></Route>
         </Routes>
       </Router>
       <footer>
