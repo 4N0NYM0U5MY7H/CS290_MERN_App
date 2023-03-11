@@ -1,7 +1,7 @@
 import React from "react";
 import AddExerciseForm from "../components/AddExerciseForm";
 
-export const AddExercisePage = () => {
+const AddExercisePage = () => {
 
     return (
         <main className="App-main">

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormInputValidation } from "react-form-input-validation";
 
-export default function AddExerciseForm() {
+function AddExerciseForm() {
 
     const [fields, errors, form] = useFormInputValidation(
         {
@@ -23,38 +23,46 @@ export default function AddExerciseForm() {
 
     const navigate = useNavigate();
 
+    /**
+     * Formats the date string as follows: MM-DD-YY.
+     * @param {String} date ISO8601 date string.
+     * @returns {String} MM-DD-YY date string.
+     */
     function formatDate(date) {
-        const splitDate = date.split("-");
-        return `${splitDate[1]}-${splitDate[2]}-${splitDate[0].substring(2, 4)}`
+        const split_date = date.split("-");
+        return `${split_date[1]}-${split_date[2]}-${split_date[0].substring(2, 4)}`
     };
 
     const addExercise = async () => {
-        const response = await fetch("/exercises", {
-            method: "POST",
-            body: JSON.stringify(fields),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        if (response.status === 201) { alert("Successfully added the exercise"); }
-        else { alert(`Failed to add exercise. Status Code: ${response.status}`); }
+        const response = await fetch("/exercises",
+            {
+                method: "POST",
+                body: JSON.stringify(fields),
+                headers:
+                {
+                    "Content-Type": "application/json",
+                },
+            });
+        response.status === 201
+            ? alert("Successfully added the exercise")
+            : alert(`Failed to add exercise. Status Code: ${response.status}`);
         navigate("/");
     };
 
     const onSubmit = async (event) => {
-        const isValid = await form.validate(event);
-        if (isValid) {
-            const newDate = formatDate(fields.date);
-            fields.date = newDate;
-            console.log("MAKE AN API CALL ==> useEffect", fields, errors, form);
+        const is_valid = await form.validate(event);
+        if (is_valid) {
+            const new_date = formatDate(fields.date);
+            fields.date = new_date;
+            console.log("MAKE AN API CALL", fields, errors, form);
             addExercise();
         }
     }
 
     useEffect(() => {
         if (form.isValidForm) {
-            const newDate = formatDate(fields.date);
-            fields.date = newDate;
+            const new_date = formatDate(fields.date);
+            fields.date = new_date;
             console.log("MAKE AN API CALL ==> useEffect", fields, errors, form);
             addExercise();
         }
@@ -153,3 +161,5 @@ export default function AddExerciseForm() {
         </form>
     );
 };
+
+export default AddExerciseForm;
