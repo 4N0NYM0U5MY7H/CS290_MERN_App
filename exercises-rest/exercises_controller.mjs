@@ -12,16 +12,16 @@ app.post("/exercises",
     body("name").notEmpty(),
 
     /** Must be an integer. Leading 0s ok. */
-    body("reps").matches(/^0*[1-9][0-9]*/),
+    body("reps").matches(/^0*[1-9]\d*/),
 
     /** Must be number. Leading 0s ok. Can be decimal. */
-    body("weight").matches(/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/),
+    body("weight").matches(/^(0*[1-9]\d*(\.\d+)?|0+\.\d*[1-9]\d*)$/),
 
     /** Must be "kgs" or "lbs". */
     body("unit").matches(/([k][g][s]|[l][b][s])/),
 
     /** Must match MM-DD-YY. */
-    body("date").matches(/^(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])(-)\d{2}$/),
+    body("date").matches(/^(((0)\d)|((1)[0-2]))(-)([0-2]\d|(3)[0-1])(-)\d{2}$/),
 
     (req, res) => {
         const errors = validationResult(req);

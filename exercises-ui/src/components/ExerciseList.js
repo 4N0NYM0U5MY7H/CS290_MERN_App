@@ -3,7 +3,7 @@ import Exercise from "./Exercise";
 
 export default function ExerciseList({ exercises, onDelete, onEdit }) {
     return (
-        <table id="exercises">
+        <table className="Exercises">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -11,13 +11,15 @@ export default function ExerciseList({ exercises, onDelete, onEdit }) {
                     <th>Weight</th>
                     <th>Unit</th>
                     <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 {exercises.map((exercise, i) => <Exercise exercise={exercise}
                     onDelete={onDelete}
                     onEdit={onEdit}
-                    key={i} />)};
+                    key={i} />)}
             </tbody>
         </table>
     );

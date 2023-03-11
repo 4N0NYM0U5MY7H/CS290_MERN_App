@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ExerciseList from "../components/ExerciseList";
 
 export default function HomePage({ setExerciseToEdit }) {
-    const [exercises, setExercises] = useState();
+    const [exercises, setExercises] = useState([]);
     const navigate = useNavigate();
 
     const onDelete = async _id => {
@@ -31,7 +31,7 @@ export default function HomePage({ setExerciseToEdit }) {
     }, []);
 
     return (
-        <main>
+        <main className="App-main">
             <h2>Home Page</h2>
             <ExerciseList exercises={exercises} onDelete={onDelete} onEdit={onEdit}></ExerciseList>
         </main>

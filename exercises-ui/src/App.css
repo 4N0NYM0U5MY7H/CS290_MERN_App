@@ -1,52 +1,283 @@
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  background-color: #282c34;
+  color: #111810;
+  margin: auto;
+  padding: auto;
+}
+
+h2 {
+  font-size: calc(10px + 2vmin);
+}
+
+
 .App {
   text-align: center;
+  min-height: 100vh;
 }
 
-.App-logo {
-  /**height: 40vmin;*/
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/**-------------------------------------------------------------------
+ * HEADER
+ * -------------------------------------------------------------------
+ */
 
 .App-header {
-  background-color: #282c34;
-  /**min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #fff;
+}
+
+/**-------------------------------------------------------------------
+ * NAV
+ * -------------------------------------------------------------------
+ */
+
+.App-nav {
+  background-color: #fff;
+}
+
+.App-nav a {
+  padding: 0px 20px 5px 20px;
+  background-color: #282c34;
+  text-decoration: none;
+  color: #fff;
+  line-height: 1;
+  vertical-align: middle;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  font-size: calc(10px + 2vmin);
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.App-nav a:hover {
+  color: #282c34;
+  background-color: #fdd114;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+/**-------------------------------------------------------------------
+ * MAIN
+ * -------------------------------------------------------------------
+ */
 
-  to {
-    transform: rotate(360deg);
-  }
+.App-main {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+/**-------------------------------------------------------------------
+ * FOOTER
+ * -------------------------------------------------------------------
+ */
+
+.App-footer {
+  background-color: #fff;
+  padding: 12px 20px;
+}
+
+/**-------------------------------------------------------------------
+ * TABLE
+ * -------------------------------------------------------------------
+ */
+
+.Exercises {
+  border: 2px solid;
+  padding: 20px;
+  min-width: 900px;
+}
+
+tr th {
+  background: #111810;
+  padding-bottom: 30px;
+  border-top: none;
+  border-bottom: none !important;
+  color: #fff;
+  font-size: 1.15em;
+}
+
+table tbody {
+  border-radius: 4px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+table tbody tr {
+  -webkit-transition: .3s all ease;
+  -o-transiton: .3s all ease;
+  transition: .3s all ease;
+}
+
+table tbody tr:hover td,
+table tbody tr:focus td {
+  color: #fdd114;
+  background-color: #000;
+}
+
+table tbody tr:nth-child(odd):hover td,
+table tbody tr:nth-child(odd):focus td {
+  color: #fdd114;
+  background-color: #777;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #777;
+  border: none !important;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #282c34;
+  border: none !important;
+}
+
+tr td {
+  color: #fff;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border: none;
+  -webkit-transition: .3s all ease;
+  -o-transiton: .3s all ease;
+  transition: .3s all ease;
+}
+
+table tbody tr:hover td.Delete-icon,
+table tbody tr:focus td.Delete-icon {
+  color: lightcoral;
+}
+
+table tbody tr:hover td.Edit-icon,
+table tbody tr:focus td.Edit-icon {
+  color: palegreen;
+}
+
+/**-------------------------------------------------------------------
+ * FORM
+ * -------------------------------------------------------------------
+ */
+
+.Exercise-input {
+  border: 2px solid;
+  padding: 32px;
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  align-items: center;
+  min-width: 900px;
+}
+
+label {
+  background-color: #282c34;
+  color: #fff;
+  font-size: 1.15em;
+  padding: 12px 20px;
+  display: block;
+  box-sizing: border-box;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+select {
+  background-color: #777;
+  color: #fff;
+}
+
+input:focus,
+select:focus {
+  border: 2px solid #fff;
+  border-radius: 4px;
+}
+
+select:hover,
+select:focus {
+  background-color: #111810;
+  color: #fdd114;
 }
 
 /** Client-side Validation */
-span::after {
-  padding-left: 5px;
+input:valid {
+  background-color: palegreen;
 }
 
-input:invalid+span::after {
-  content: "✖";
+input:invalid {
+  background-color: lightpink;
 }
 
-input:valid+span::after {
-  content: "✓";
+/**-------------------------------------------------------------------
+ * BUTTON
+ * -------------------------------------------------------------------
+ */
+
+button {
+  margin: 1.0125em;
+  padding: 10px 20px;
+  background-color: #777;
+  color: #fff;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 1.15em;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1;
+  border: 2px solid #777;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+}
+
+button:hover,
+button:focus {
+  background-color: #fdd114;
+  color: #111810;
+  border: 2px solid #fdd114;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  border-radius: 4px;
 }
