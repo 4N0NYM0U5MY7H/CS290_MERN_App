@@ -41,7 +41,7 @@ const exerciseShema = mongoose.Schema({
     date: {
         type: String,
         required: true,
-        match: "/^(((0)\d)|((1)[0-2]))(-)([0-2]\d|(3)[0-1])(-)\d{2}$/"
+        match: /^(((0)\d)|((1)[0-2]))(-)([0-2]\d|(3)[0-1])(-)\d{2}$/
     }
 });
 

@@ -61,11 +61,9 @@ app.get("/exercises", (req, res) => {
 app.get("/exercises/:_id", (req, res) => {
     exercises.findExerciseById(req.params._id)
         .then(exercise => {
-            if (exercise !== null) {
-                res.json(exercise);
-            } else {
-                res.status(404).json({ Error: "Not found" });
-            }
+            exercise !== null
+                ? res.json(exercise)
+                : res.status(404).json({ Error: "Not found" });
         })
         .catch(error => {
             console.error(error);
@@ -103,19 +101,17 @@ app.put("/exercises/:_id",
             req.body.unit,
             req.body.date
         )
-            .then(numUpdated => {
-                if (numUpdated) {
-                    res.json({
+            .then(number_updated => {
+                number_updated
+                    ? res.json({
                         _id: req.params._id,
                         name: req.body.name,
                         reps: req.body.reps,
                         weight: req.body.weight,
                         unit: req.body.unit,
                         date: req.body.date
-                    });
-                } else {
-                    res.status(404).json({ Error: "Not found" });
-                }
+                    })
+                    : res.status(404).json({ Error: "Not found" });
             })
             .catch(error => {
                 console.log(error);
@@ -125,12 +121,10 @@ app.put("/exercises/:_id",
 
 app.delete("/exercises/:_id", (req, res) => {
     exercises.deleteExercise(req.params._id)
-        .then(deletedCount => {
-            if (deletedCount === 1) {
-                res.status(204).send();
-            } else {
-                res.status(404).json({ Error: "Not found" });
-            }
+        .then(deleted_count => {
+            deleted_count === 1
+                ? res.status(204).send()
+                : res.status(404).json({ Error: "Not found" });
         })
         .catch(error => {
             console.log(error);
