@@ -80,7 +80,7 @@ function EditExerciseForm({ exerciseToEdit }) {
 
     return (
         <form
-            className="Exercise-input"
+            className="Exercise-form"
             noValidate
             autoComplete="off"
             onSubmit={onSubmit}
@@ -128,7 +128,7 @@ function EditExerciseForm({ exerciseToEdit }) {
                         value={fields.weight}
                     />
                 </label>
-                <label className="errors">
+                <label className="error">
                     {errors.weight ? errors.weight : ""}
                 </label>
             </p>

@@ -70,7 +70,7 @@ function AddExerciseForm() {
 
     return (
         <form
-            className="Exercise-input"
+            className="Exercise-form"
             noValidate
             autoComplete="off"
             onSubmit={onSubmit}
@@ -121,7 +121,7 @@ function AddExerciseForm() {
                         placeholder="number > 0"
                     />
                 </label>
-                <label className="errors">
+                <label className="error">
                     {errors.weight ? errors.weight : ""}
                 </label>
             </p>
@@ -135,6 +135,7 @@ function AddExerciseForm() {
                         onChange={form.handleChangeEvent}
                         value={fields.unit}
                     >
+                        <option value="">Select units</option>
                         <option value="kgs">kgs</option>
                         <option value="lbs">lbs</option>
                     </select>
