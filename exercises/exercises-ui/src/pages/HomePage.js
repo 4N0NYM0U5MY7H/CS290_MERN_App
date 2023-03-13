@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ExerciseList from "../components/ExerciseList";
 
-export default function HomePage({ setExerciseToEdit }) {
+function HomePage({ setExerciseToEdit }) {
     const [exercises, setExercises] = useState([]);
     const navigate = useNavigate();
 
     const onDelete = async _id => {
-        const response = await fetch(`/exercises/${_id}`, { method: "DELETE" });
-        if (response.status === 204) {
-            setExercises(exercises.filter(ex => ex._id !== _id));
-        } else {
-            console.error(`Failed to delete exercise _id: ${_id}, status code: ${response.status}`);
-        }
+        const response = await fetch(`/exercises/${_id}`,
+            {
+                method: "DELETE"
+            });
+        response.status === 204
+            ? setExercises(exercises.filter(e => e._id !== _id))
+            : console.error(`Failed to delete exercise _id: ${_id}. Status Code: ${response.status}`);
     };
 
     const onEdit = exercise => {
@@ -33,7 +34,13 @@ export default function HomePage({ setExerciseToEdit }) {
     return (
         <main className="App-main">
             <h2>Home Page</h2>
-            <ExerciseList exercises={exercises} onDelete={onDelete} onEdit={onEdit}></ExerciseList>
+            <ExerciseList
+                exercises={exercises}
+                onDelete={onDelete}
+                onEdit={onEdit}
+            />
         </main>
     );
 };
+
+export default HomePage;

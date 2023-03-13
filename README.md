@@ -1,276 +1,97 @@
-![](.github/osuEcampus.png)
+<picture>
+  <source
+    srcset=".github/osu-ecampus-dark.png"
+    media="(prefers-color-scheme: dark)"
+  />
+  <source
+    srcset=".github/osu-ecampus-light.png"
+    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+  />
+  <img src=".github/osu-ecampus-light.png" alt="Oregon State University Ecampus Logo." />
+</picture>
+
 # Assignment 9 — Full Stack Mern App
-**Due** Mar 17 by 11:59pm **Points** 34 **Submitting** a file upload **Available** Mar 6 at 8am - Mar 19 at 11:59pm
 
-## Introduction
-In this assignment, you will use the MERN stack to write a Single Page Application (SPA) that tracks exercises completed by the user. You will use React for the front-end UI app. You will write a REST API using Node and Express for the back-end web service. You will use MongoDB for persistence.
+## Table of Contents
+- [Assignment 9 — Full Stack Mern App](#assignment-9--full-stack-mern-app)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+      - [References](#references)
+  - [Build and run the project](#build-and-run-the-project)
+    - [Build the REST API back-end web service](#build-the-rest-api-back-end-web-service)
+    - [Build the React front-end UI](#build-the-react-front-end-ui)
+  - [Built With](#built-with)
+  - [License](#license)
 
-**This is the "Portfolio Assignment" for the course**. This means that you are allowed to post the entirety of the assignment publicly (e.g., Github, personal website, etc.) after the term ends. You can use this as an opportunity to showcase your work to potential employers. 
+## About
+This Single Page Application (SPA) uses the MERN stack (`MongoDB`, `Express`, `React`, `Node.js`) to track exercises completed by the user. The front-end UI is created using React.  The REST API back-end web service is created using Node.js and Express. Data persistence is provided using MongoDB.
 
-**Be sure to periodically review [Assignment 9: Tips, FAQs, Corrections thread](https://edstem.org/us/courses/32738/discussion/2742723) in the Ed discussion board (pinned at the top)**
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for demonstration purposes.
 
-### Learning Outcomes
-* What is the lifecycle of a React component? (Module 9 MLO 1)
-* What are the useEffect and useHistory React hooks? (Module 9 MLO  2)
-* How can we deploy a React app created using create-react-app (CRA) (Module 9 MLO 3)?
-* What is the Fetch API? (Module 9 MLO 4)
-* Why do we need to lift up state in some apps? (Module 9 MLO 5)?
-
-## Data for the App
-You will store the data in MongoDB in a collection named `exercises`. Each document in the collection must have the following properties (i.e., all properties are required):
-
-| Property | Data Type | Comments                                                                        |
-| :------- | :-------- | :------------------------------------------------------------------------------ |
-| name     | String    | The name of the exercise                                                        |
-| reps     | Number    | The number of times the exercise was performed                                  |
-| weight   | Number    | The weight of the weights used for the exercise                                 |
-| unit     | String    | The unit of measurement of the weight. Only values allowed are `kgs` and `lbs`  |
-| date     | String    | The date the exercise was performed. Specified as `MM-DD-YY`, e.g., `07-30-21`. |
-
-## REST API Web Service
-You must implement a REST API that supports CRUD operations by implementing the following 4 endpoints:
-
-### 1. Create using `POST /exercises`
-#### Request
-* The request body will be a JSON object with the 5 properties listed in the data model.
-* The POST request will have no path parameters.
-
-#### Request Validation
-You can assume that the request body is a JSON object. However, your code must validate the request body. If the request body is valid then a new document must be created and the "Success" response (described below) must be sent. If the request body is invalid then the "Failure" response (described below) must be sent. Here are the requirements for the request body to be valid
-
-* The body must contain all 5 properties (in other words, if any of the 5 properties is missing, the request is invalid).
-* The `name` property must be a string containing at least one character (i.e., it can't be empty or a null string).
-* The `reps` property must be an integer greater than `0`.
-* The `weight` property must be an integer greater than `0`.
-* The `unit` property must be either the string `kgs` or the string `lbs`.
-* The `date` property must be a string in the format `MM-DD-YY`, where `MM`, `DD` and `YY` are 2-digit integers.
-  * To validate this property, you can write your own code or just use a function we have provided in the section "[Hints and Suggestions for the REST API](#hints--suggestions-for-the-rest-api)."
-  * Optional: You can enhance validation to ensure that the date is correct for the given month and year, assuming that the year is in this century
-    * E.g., `12-31-21` and `02-29-20` are valid, but `13-32-21` and `02-30-20` are invalid
-  * But any additional validation beyond the function we have provided is not required.
-
-#### Response
-* Success: If the request is valid then a new document must be created and the following response must be sent
-  * Body: A JSON object with all the properties of the document including the unique ID value generated by MongoDB.
-  * Content-type: `application/json`.
-  * Status code: `201`.
-* Failure: If the request body is invalid then the following response must be sent
-  * Body: A JSON object `{ Error: "Invalid request"}`
-  * Content-type: `application/json`.
-  * Status code: `400`.
-
-### 2. Read using `GET /exercises`
-#### Request
-* No path parameter.
-* No request body (you don't need to validate this).
-
-#### Response
-* Body: A JSON array containing the entire collection.
-  * If the collection is empty, the response will be an empty array
-  * Each document in the collection must be a JSON object with all the properties of the document including the ID.
-* Content-type: `application/json`.
-* Status code: `200`.
-
-### 3. GET using `GET /exercises/:_id`
-#### Request
-* The path parameter will contain the ID of the document.
-* No request body (you don't need to validate this).
-
-#### Response
-* Success: If a document exists with the specified ID, the following response must be sent
-  * Body: A JSON object with all the properties of the document including the unique ID value.
-  * Content-type: `application/json`.
-  * Status code `200`.
-* Failure:  If no document exists with the specified ID, the following response must be sent
-  * Body: A JSON object `{ Error: "Not found"}`
-  * Content-type: `application/json`.
-  * Status code: `404`.
-
-### 4. Update using `PUT /exercises/:_id`
-#### Request
-* The request body will be a JSON object with all the 5 properties listed in the data model.
-* The `date` property will be in the format `MM-DD-YY`, e.g., `06-24-21`.
-* The path parameter will contain the ID of a document.
-
-#### Response
-* Success: If the request body is valid and a document exists with the specified ID, then the document must be updated and the following response must be sent
-  * Body: A JSON object with all the properties of the updated document including the ID.
-  * Content-type: `application/json`.
-  * Status code: `200`.
-* Failure: If the request body is invalid then the following response must be sent
-  * Body: A JSON object `{ Error: "Invalid request"}`
-  * Content-type: `application/json`.
-  * Status code: `400`.
-* Failure:  If no document exists with the specified ID, the following response must be sent
-  * Body: A JSON object `{ Error: "Not found"}`
-  * Content-type: `application/json`.
-  * Status code: `404`.
-> **Note**: first check the validity of the request body and if it is invalid, return the response with status code `400`. Only look for the existence of the document if the request body is valid.
-
-### 5. DELETE using `DELETE /exercises/:_id`
-#### Request
-* The path parameter will contain the ID of the document.
-* There will not be a request body (you don't need to validate this).
-
-#### Response
-* Success: If a document exists with the specified ID, it must be deleted and the following response must be sent
-  * Body: No response body
-  * Content-type: Not applicable
-  * Status code: `204`.
-* Failure: If no document exists with the specified ID, the following response must be sent
-  * Body: A JSON object `{ Error: "Not found"}`
-  * Content-type: `application/json`.
-  * Status code: `404`.
-
-### Technical Requirements
-#### Separate Model Code from Controller Code
-* Your model code must be separate from your controller code.
-  * You cannot import the `mongoose` package in your controller code.
-  * You cannot import the `express` packages in your model code.
-* Your model code can be in as many files as you want.
-* Similarly, your controller code can be in as many files as you want.
-* However, the model code and the controller code must be in separate files.
-
-#### Use a `.env` file
-* Your REST API must use a `.env` file with 2 variables
-  * `PORT` with value `3000`, which is the port on which the Express server for the REST API will receive HTTP requests, and
-  * `MONGODB_CONNECT_STRING` with the connect string that must be used to connect to the MongoDB server.
-    * When testing your program we will change the value of this string to the MongoDB server we want to use for testing.
-
-#### Use ES Modules
-* Your REST API code must use ES modules (i.e., you cannot use Common JS modules)
-
-### Hints & Suggestions for the REST API
-* You can write the code to validate the request body from scratch, or write it using the package [express-validator](https://express-validator.github.io/docs/), whichever you prefer.
-* To validate the date property, you can write your own code or you can use the following function
-```JavaScript
-/**
-*
-* @param {string} date
-* Return true if the date format is MM-DD-YY where MM, DD and YY are 2 digit integers
-*/
-function isDateValid(date) {
-    // Test using a regular expression. 
-    // To learn about regular expressions see Chapter 6 of the text book
-    const format = /^\d\d-\d\d-\d\d$/;
-    return format.test(date);
-}
+### Prerequisites
+You need to have a machine with [Node.js version 18.x](https://nodejs.org/en/download/) installed.
+```bash
+$ node --version
+v18.13.0
 ```
-* The Mongoose function [updateOne](https://mongoosejs.com/docs/api.html#model_Model-updateOne) returns a promise that resolves to an object with information about the update operation.
-  * The value of the property `matchedCount` is `0` if no document matched the filter passed to `udpateOne`.
-  * You can use this to determine if a document with the specified ID exists or not.
-* The Mongoose function [findById](https://mongoosejs.com/docs/api.html#model_Model-findById) returns a promise.
-  * If a document is found matching the ID then the promise resolves to that document.
-  * Otherwise the promise resolves to a null value.
+This project requires a MongoDB database. This can be installed on your local machine or alternaively set up using a hosting service such as MongoDB Atlas.
 
-## React UI
-The UI must have the following 3 pages:
+#### References
+* Install MongoDB on your local machine
+  * MongoDB 5 Community Edition
+    * [Install on Windows](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/#install-mongodb-community-edition)
+    * [Install on Mac](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/)
+    * [Install on Linux](https://www.mongodb.com/docs/manual/administration/install-on-linux/)
+* Use a hosting service (recommended)
+  * MongoDB Atlas
+    * Go to [Register](https://account.mongodb.com/account/register)
+    * Create a Project
+    * Build a Database
+      * Choose free option
+      * Create a database user
+      * Add an IP Address to the IP Access List
+    * Go to Connect
+      * Choose connect your application
+      * Copy the connection string
+  * Open the `.env` file in the `exercises/exercises-rest` dicretory
+    * `MONGODB_CONNECT_STRING` = paste your connection string
 
-1. Home Page.
-1. Edit Exercise Page.
-1. Create Exercise Page.
+## Build and run the project
+All installation is handled using `npm`. The following steps will install the project dependencies. This project also includes `.env` files with demo `PORT` variables.
 
-### Home Page
-* This page is rendered when the app starts up.
-* The page must display the data for all the exercises stored in MongoDB.
-* The page must get the data by calling the endpoint `GET /exercises` in the REST API.
-* The data must be displayed in an HTML table.
-* Each row must display the 5 properties listed in the data model. The ID value must not be displayed.
-* In addition to the data, each row must include 2 icons from the [React Icons library](https://react-icons.github.io/react-icons/), one to support deleting the row and the other for updating the row.
-  * You can choose any suitable icon from the library that clearly indicates the correct use of clicking on it.
-  * Clicking on the delete icon must immediately delete the row by calling the endpoint `DELETE /exercises/:id` in the REST API.
-  * Clicking on the edit icon must take the user to the Edit Exercise Page.
-* You must implement a React component for the table and another for the row. You can implement as many React components beyond these two as you want, e.g., the row itself may contain other React components.
-* This page must include a way for the user to go to the Create Exercise Page.
-  * It is your choice how you present this functionality as long as it is clear how the user can go to that page.
-  * For example, you can provide a link or an icon with informational text.
+### Build the REST API back-end web service
+```sh
+# Terminal 1
+$ cd exercises/exercises-rest
+$ npm install
+$ npm run
+```
 
-### Edit Exercise Page
-* This page will allow the user to edit the specific exercise for which the user clicked the edit icon.
-* The controls to edit the exercise must be pre-populated with the existing data for that row.
-* You must provide a button that
-  * Saves the updated exercise by calling the endpoint `PUT /exercises/:id` in the REST API, and
-    * If the update is successful (i.e., the response status code is `200`), then  
-      * Shows an alert to the user with a message about the update being successful, and
-      * Automatically takes the user back to the Home page.
-    * If the update is unsuccessful (i.e., the response status is not `200`), then
-      * Shows an alert to the user with a message about the update having failed, and
-      * Automatically takes the user back to the Home page. 
+### Build the React front-end UI
+```sh
+# Terminal 2
+$ cd exercises/exercises-ui
+$ npm install
+$ npm run
+```
 
-### Create Exercise Page
-* This page will allow the user to add a new exercise to the database.
-* You must provide input controls for the user to enter the 5 required properties.
-* You must provide a button that:
-  * Saves this new exercise by calling the endpoint `POST /exercises` in the REST API, and
-    * If the creation is successful (i.e., the response status code is `201`), then  
-      * Shows an alert to the user with a message about the exercise being created, and
-      * Automatically takes the user back to the Home page.
-    * If the creation is unsuccessful (i.e., the response status is not `201`), then
-      * Shows an alert to the user with a message about the exercise creation having failed, and
-      * Automatically takes the user back to the Home page.
+## Built With
+REST API back-end web service
+* [Node 18.13.0](https://nodejs.org/en/download/) — Open-source, cross-platform JavaScript runtime environment.
+* [Express 4.18.2](https://www.npmjs.com/package/express) — Fast, unopinionated, minimalist web framework for Node.js.
+* [Express Validator 6.15.0](https://www.npmjs.com/package/express-validator) — An express.js middleware for validator.
+* [Mongoose 7.0.1](https://www.npmjs.com/package/mongoose) — MongoDB object modeling tool designed to work in an asynchronous environment.
+* [MongoDB Atlas](https://www.mongodb.com/atlas) — An integrated suite of cloud database and data services.
 
-### Technical Requirements
-#### Function-Based Components
-* Your React components must be function-based. You are not allowed to define class-based components.
+React front-end UI
+* [Node 18.13.0](https://nodejs.org/en/download/) — an open-source, cross-platform JavaScript runtime environment.
+* [React 18.2.0](https://www.npmjs.com/package/react) — JavaScript library for creating user interfaces.
+* [React Form Input Validation 2.1.0](https://www.npmjs.com/package/react-form-input-validation) — A customized `validatorjs` library to validate the React forms.
+* [React Icons 4.8.0](https://www.npmjs.com/package/react-icons) — Easily include popular icons in your React projects.
+* [React Router Dom 6.8.2](https://www.npmjs.com/package/react-router-dom/v/6.8.2) — Contains bindings for using `React Router` in web applications.
 
-#### Use the React Functionality Discussed in the Course
-* You cannot use any React functionality we didn't cover in the course without getting instructor approval.
-* In particular, you cannot use frameworks like `Next.js`.
-
-#### Use a `.env` file & set the proxy property
-* Your React app must use a `.env` file with a variable `PORT=8000` which is the port on which the Express server for the React app will receive HTTP requests.
-* You must add the `proxy` property to the React app's `package.json` file as discussed in the exploration.
-
-### CSS
-Update and add rules to the existing `App.css` file that resides in the `/src` folder.
-> **Note**: that specifying black, white, and Times New Roman font are not allowed (because they are already the defaults).
-
-* Global page design:
-  * Add a `body` rule in the first line of the `App.css` file that defines the `font-family`, `background-color`, `color`, `margin`, and `padding` for the app.
-* Table
-  * Add `tr th` and `tr td` rules to update `border`s, `color`, and `padding`.
-* Form
-  * Add `input`, and `button` rules that include the same `font-family` as the `body`
-    * This is needed because the form elements do not inherit the `font-family` from `body` by default
-> **Note**: you are allowed to add additional rules beyond the required rules listed above.
-
-### Design Features
-* You must use a `<select>` element to provide the options for selecting the value of `unit`s in the Edit Exercise Page and the Create Exercise Page.
-* You need to add semantic page layout tags in the `App.js` file, including at least the following:
-  * The `<header>` tag will include a heading level 1 `<h1>` tag to specify the app's name and a paragraph `<p>` that describes it.
-  * The `<footer>` tag will include the student's name in a copyright statement: `© year first last`.
-  * These tags must show up on all 3 pages.
-* All 3 pages must have links to the Home Page and the Create Exercise Page using a React component named `Navigation`.
-  * The component `Navigation` must use the [`<nav>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav) and the [`Link` component](https://v5.reactrouter.com/web/api/Link) from `react-router-dom` to have links to the Home Page and the Create Exercise Page.
-  * Add this component in `App.js` before the routes.
-
-## Hints
-* The REST API for this assignment is a cleaned up version of the REST API you implemented in Assignment 7.
-* The React app for this assignment is very similar to the movie-ui React app implemented in Module 9. Follow along with the videos in that module to code the movie-ui React app and that will help you implement the React app for this assignment.
-
-## What to Turn In?
-* You will submit two zip files, one for the React app and the other for the REST API.
-* For REST API, make sure to include a `.env` file as described in the section REST API Web Service.
-* For the React app
-  * Submit the development build.
-  * Make sure to include a .env file as described in the section React UI
-  * When we start the React app, the server must listen on port 8000.
-* The zip files must be named youronid_react.zip (for the React app) and youronid_rest.zip (for the REST API) where youronid must be replaced by your own ONID.
-  * E.g., if `chaudhrn` was submitting the assignment, the files must be named `chaudhrn_react.zip` and `chaudhrn_rest.zip`.
-  * When you resubmit a file in Canvas, Canvas can attach a suffix to the file, e.g., the file name may become `chaudhrn_react-1.zip`. Don’t worry about this name change as no points will be deducted because of this.
-* In each zip file, you must include all the code for your application, **except** the `node_modules` directory.
-* The grader will unzip each of your zip files, go to the root directory, run `npm install` and then run `npm start` to start your applications and test them.
-
-## Grading Criteria
-* This assignment is worth 15% of your final grade.
-* The points for the assignment and the break-up for items is described in the grading rubric.
-
-## Rubric
-For grading details please see the attached rubric.
-
-## Extensions (not for extra credit)
-Want an extra challenge? Try the following once you have met the assignment requirements:
-
-1. Deploy your app on the platform of a cloud vendor.
-
-2. Secure your app by adding login functionality. Instead of rolling your own authentication solution, we recommend that you use a 3rd party such as [Auth0](https://auth0.com/docs/quickstart/webapp/express) for this.
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

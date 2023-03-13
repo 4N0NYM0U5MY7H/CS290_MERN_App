@@ -1,7 +1,7 @@
 import React from "react";
 import Exercise from "./Exercise";
 
-export default function ExerciseList({ exercises, onDelete, onEdit }) {
+function ExerciseList({ exercises, onDelete, onEdit }) {
     return (
         <table className="Exercises">
             <thead>
@@ -24,3 +24,5 @@ export default function ExerciseList({ exercises, onDelete, onEdit }) {
         </table>
     );
 };
+
+export default ExerciseList;
