@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import "dotenv/config";
 
+mongoose.set("sanitizeFilter", true);
 mongoose.connect(
     process.env.MONGODB_CONNECT_STRING,
     { useNewUrlParser: true }
