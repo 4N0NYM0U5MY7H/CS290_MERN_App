@@ -10,12 +10,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AN0NYM0U5MY7H/CS290_A9_Full_Stack_MERN_App.git"
+    "url": "git+https://github.com/AN0NYM0U5MY7H/CS290_MERN_App.git"
   },
   "bugs": {
-    "url": "https://github.com/AN0NYM0U5MY7H/CS290_A9_Full_Stack_MERN_App/issues"
+    "url": "https://github.com/AN0NYM0U5MY7H/CS290_MERN_App/issues"
   },
-  "homepage": "https://github.com/AN0NYM0U5MY7H/CS290_A9_Full_Stack_MERN_App#readme",
+  "homepage": "https://github.com/AN0NYM0U5MY7H/CS290_MERN_App#readme",
   "description": "CS290: Web Development — Final Project.",
   "dependencies": {
     "dotenv": "^16.0.3",

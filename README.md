@@ -26,7 +26,7 @@
   - [License](#license)
 
 ## About
-This Single Page Application (SPA) uses the MERN stack (`MongoDB`, `Express`, `React`, `Node.js`) to track exercises completed by the user. The front-end UI is created using React.  The REST API back-end web service is created using Node.js and Express. Data persistence is provided using MongoDB.
+This Single Page Application (SPA) uses the MERN stack (`MongoDB`, `Express`, `React`, `Node`) to track exercises completed by the user. The front-end UI is created using React.  The REST API back-end web service is created using Node.js and Express. Data persistence is provided using MongoDB.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for demonstration purposes.
