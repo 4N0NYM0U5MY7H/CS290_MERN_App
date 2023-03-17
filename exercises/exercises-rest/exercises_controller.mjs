@@ -102,15 +102,17 @@ app.put("/exercises/:_id",
             req.body.date
         )
             .then(number_updated => {
-                number_updated
-                    ? res.json({
-                        _id: req.params._id,
-                        name: req.body.name,
-                        reps: req.body.reps,
-                        weight: req.body.weight,
-                        unit: req.body.unit,
-                        date: req.body.date
-                    })
+                number_updated.matchedCount
+                    ? number_updated.modifiedCount
+                        ? res.json({
+                            _id: req.params._id,
+                            name: req.body.name,
+                            reps: req.body.reps,
+                            weight: req.body.weight,
+                            unit: req.body.unit,
+                            date: req.body.date
+                        })
+                        : res.status(400).json({ Error: "Invalid Request" })
                     : res.status(404).json({ Error: "Not found" });
             })
             .catch(error => {

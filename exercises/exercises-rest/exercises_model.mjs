@@ -109,7 +109,7 @@ const updateExercise = async (_id, name, reps, weight, unit, date) => {
             unit: unit,
             date: date
         });
-    return result.modifiedCount;
+    return result;
 };
 
 /**
