@@ -10,7 +10,7 @@
   <img src=".github/osu-ecampus-light.png" alt="Oregon State University Ecampus Logo." />
 </picture>
 
-# CS290: Assignment 9 — Full Stack Mern App
+# CS290: Assignment 9 — Full Stack MERN App
 
 ## Table of Contents
 - [Assignment 9 — Full Stack Mern App](#assignment-9--full-stack-mern-app)
