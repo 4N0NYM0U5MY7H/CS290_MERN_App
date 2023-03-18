@@ -1,19 +1,19 @@
 <picture>
   <source
-    srcset=".github/osu-ecampus-dark.png"
+    srcset=".github/osu_horizontal_white.png"
     media="(prefers-color-scheme: dark)"
   />
   <source
-    srcset=".github/osu-ecampus-light.png"
+    srcset=".github/osu_horizontal_black_.png"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
-  <img src=".github/osu-ecampus-light.png" alt="Oregon State University Ecampus Logo." />
+  <img src=".github/osu_horizontal_black.png" alt="Oregon State University Logo." height="80px" />
 </picture>
 
 # CS290: Assignment 9 — Full Stack MERN App
 
 ## Table of Contents
-- [Assignment 9 — Full Stack Mern App](#assignment-9--full-stack-mern-app)
+- [CS290: Assignment 9 — Full Stack MERN App](#cs290-assignment-9--full-stack-mern-app)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
   - [Getting Started](#getting-started)
