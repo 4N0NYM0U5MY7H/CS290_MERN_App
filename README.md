@@ -11,8 +11,15 @@
 </picture>
 
 # CS290: Assignment 9 — Full Stack MERN App
+> **Note**: This project is for demonstration purposes only. This project is not maintained and is not intended to be used in production.
+
+![Last Updated](https://img.shields.io/badge/March_2023-critical?label=Last%20Updated&style=flat-square)
+![Not Maintained](https://img.shields.io/badge/Not_Maintained-critical?label=Status&style=flat-square)
 
 ## Table of Contents
+<details>
+<summary>Expand to view</summary>
+
 - [CS290: Assignment 9 — Full Stack MERN App](#cs290-assignment-9--full-stack-mern-app)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
@@ -24,6 +31,8 @@
     - [Build the React front-end UI](#build-the-react-front-end-ui)
   - [Built With](#built-with)
   - [License](#license)
+
+</details>
 
 ## About
 This Single Page Application (SPA) uses the MERN stack (`MongoDB`, `Express`, `React`, `Node`) to track exercises completed by the user. The front-end UI is created using React.  The REST API back-end web service is created using Node.js and Express. Data persistence is provided using MongoDB.
@@ -80,19 +89,19 @@ $ npm run
 
 ## Built With
 REST API back-end web service
-* [![Node.js v18.13](https://img.shields.io/badge/v18.13-339933?label=Node.js&labelColor=141414&logo=nodedotjs&style=flat-square)](https://nodejs.org/en/download/) — Open-source, cross-platform JavaScript runtime environment.
-* [![Nodemon v2.0.21](https://img.shields.io/badge/v2.0.21-76D04B?label=Nodemon&labelColor=141414&logo=nodemon&style=flat-square)](https://www.npmjs.com/package/nodemon) — Automatically restart node applications on file changes.
-* [![Express v4.18.2](https://img.shields.io/badge/v4.18.2-000?label=Express&labelColor=141414&logo=express&style=flat-square)](https://www.npmjs.com/package/express) — Fast, unopinionated, minimalist web framework for Node.js.
-* [![Express Validator v6.15](https://img.shields.io/badge/v6.15-CB3837?label=Express%20Validator&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/express-validator) — An express.js middleware for validator.
-* [![Mongoose v7.0.1](https://img.shields.io/badge/v7.0.1-CB3837?label=Mongoose&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/mongoose) — MongoDB object modeling tool designed to work in an asynchronous environment.
-* [![MongoDB Atlas](https://img.shields.io/badge/Atlas-47A248?label=MongoDB&labelColor=141414&logo=mongodb&style=flat-square)](https://www.mongodb.com/atlas) — An integrated suite of cloud database and data services.
+* [![Node.js v18.13](https://img.shields.io/badge/v18.13-339933?label=Node.js&labelColor=141414&logo=nodedotjs&style=flat-square)](https://nodejs.org/en/download/)
+* [![Nodemon v2.0.21](https://img.shields.io/badge/v2.0.21-76D04B?label=Nodemon&labelColor=141414&logo=nodemon&style=flat-square)](https://www.npmjs.com/package/nodemon)
+* [![Express v4.18.2](https://img.shields.io/badge/v4.18.2-000?label=Express&labelColor=141414&logo=express&style=flat-square)](https://www.npmjs.com/package/express)
+* [![Express Validator v6.15](https://img.shields.io/badge/v6.15-CB3837?label=Express%20Validator&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/express-validator)
+* [![Mongoose v7.0.1](https://img.shields.io/badge/v7.0.1-CB3837?label=Mongoose&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/mongoose)
+* [![MongoDB Atlas](https://img.shields.io/badge/Atlas-47A248?label=MongoDB&labelColor=141414&logo=mongodb&style=flat-square)](https://www.mongodb.com/atlas)
 
 React front-end UI
-* [![Node.js v18.13](https://img.shields.io/badge/v18.13-339933?label=Node.js&labelColor=141414&logo=nodedotjs&style=flat-square)](https://nodejs.org/en/download/) — Open-source, cross-platform JavaScript runtime environment.
-* [![React v18.2](https://img.shields.io/badge/v18.2-61DAFB?label=React&labelColor=141414&logo=react&style=flat-square)](https://www.npmjs.com/package/react) — JavaScript library for creating user interfaces.
-* [![React Form Input Validation v2.1](https://img.shields.io/badge/v2.1-CB3837?label=React%20Form%20Input%20Validation&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/react-form-input-validation) — A customized `validatorjs` library to validate the React forms.
-* [![React Icons v4.8](https://img.shields.io/badge/v4.8-CB3837?label=React%20Icons&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/react-icons) — Easily include popular icons in your React projects.
-* [![React Router Dom badge.](https://img.shields.io/badge/v6.8.2-CA4245?label=React%20Router%20Dom&labelColor=141414&logo=reactRouter&style=flat-square)](https://www.npmjs.com/package/react-router-dom/v/6.8.2) — Contains bindings for using `React Router` in web applications.
+* [![Node.js v18.13](https://img.shields.io/badge/v18.13-339933?label=Node.js&labelColor=141414&logo=nodedotjs&style=flat-square)](https://nodejs.org/en/download/)
+* [![React v18.2](https://img.shields.io/badge/v18.2-61DAFB?label=React&labelColor=141414&logo=react&style=flat-square)](https://www.npmjs.com/package/react)
+* [![React Form Input Validation v2.1](https://img.shields.io/badge/v2.1-CB3837?label=React%20Form%20Input%20Validation&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/react-form-input-validation)
+* [![React Icons v4.8](https://img.shields.io/badge/v4.8-CB3837?label=React%20Icons&labelColor=141414&logo=npm&style=flat-square)](https://www.npmjs.com/package/react-icons)
+* [![React Router Dom badge.](https://img.shields.io/badge/v6.8.2-CA4245?label=React%20Router%20Dom&labelColor=141414&logo=reactRouter&style=flat-square)](https://www.npmjs.com/package/react-router-dom/v/6.8.2)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
