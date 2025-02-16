@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: CS290 Fullstack MERN App
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: August
+    family-names: Frisk
+    orcid: 'https://orcid.org/0009-0007-9200-8438'
+    email: friska@oregonstate.edu
+    affiliation: Oregon State University
+repository-code: 'https://github.com/4N0NYM0U5MY7H/CS290_MERN_App'
+abstract: >-
+  This Single Page Application (SPA) uses the MERN stack
+  (MongoDB, Express, React, Node) to track exercises
+  completed by the user. The front-end UI is created using
+  React. The REST API back-end web service is created using
+  Node.js and Express. Data persistence is provided using
+  MongoDB.
+license: MIT
+date-released: '2023-03-18'
